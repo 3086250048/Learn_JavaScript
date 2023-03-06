@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./资源/去除默认样式.css">
+    <script src="./资源/move.js" ></script>
+    <script>
+        window.onload = function () {
+            var img_lis = document.getElementById('img_lis');
+            var img_count = document.getElementsByTagName('li').length;
+            img_lis.style.width = img_count * 630 + 'px';
+            var speed = 1;
+
+            var nav = document.getElementById('nav');
+            var outer = document.getElementById('outer');
+            nav.style.left = (outer.offsetWidth - nav.offsetWidth) / 2 + 'px';
+            nav.style.top = outer.offsetHeight - 45 + 'px'
+
+            var index = 0;
+            var all_a = document.getElementsByTagName('a');
+            var select_a = document.getElementsByTagName('a')[index];
+            select_a.style.backgroundColor = "black";
+
+            //点击超链接切换图片
+            for (var i = 0; i < all_a.length; i++) {
+                //使i的数值可以传入函数内
+                all_a[i].num = i;
+                all_a[i].onclick = function () {
+                    //防止自动切换干扰手动切换
+                    clearInterval(result);
+                    index = this.num;
+                   // img_lis.style.left = index * -630 + 'px'
+                    set_Acolor();
+                    move(img_lis,'left',20,index*-630,10,function(){
+                        chage_img();
+                    })
+                
+                };
+
+            };
+            //使除点击a标签以外的标签都变为红色
+            function set_Acolor() {
+                if(index%img_count>=img_count-1){
+                    index=0;
+                    img_lis.style.left=0;
+                }
+                all_a[index%img_count].style.backgroundColor='black';
+                for (var i = 0; i < all_a.length; i++) {
+                    if (i == index%img_count) {
+                        continue
+                    } else {
+                        all_a[i].style.backgroundColor = '';
+                    };
+                }
+
+            }
+
+            //点击时要关闭自动播放的定时器
+            var result
+            //定时切换
+            function chage_img(){
+                //开启定时器
+               result= setInterval(function(){
+                    index++;
+                    move(img_lis,'left',20,index%img_count*-630,10,function(){
+                        set_Acolor();
+                    });
+                    
+                },5000);
+            };
+            chage_img()
+        }
+    </script>
+    <style>
+        #outer {
+            width: 630px;
+            height: 430px;
+
+            margin: 50px auto;
+            background-color: #bfc;
+
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        #img_lis {
+            position: absolute;
+        }
+
+        #img_lis li {
+            float: right;
+            margin: auto 10px;
+        }
+
+        #nav {
+
+            position: absolute;
+        }
+
+        #nav a {
+            float: left;
+            background-color: red;
+            width: 25px;
+            height: 25px;
+            opacity: 0.5;
+            margin: 0 10px;
+
+        }
+        #nav a:hover{
+            background-color:black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="img_lis">
+            <li> <img src="./资源/1.png"> </li>
+            <li> <img src="./资源/2.png"> </li>
+            <li> <img src="./资源/3.png"> </li>
+            <li> <img src="./资源/4.png"> </li>
+            <li> <img src="./资源/5.png"> </li>
+            <li> <img src="./资源/1.png"> </li>
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+           
+
+        </div>
+    </div>
+
+</body>
+
+</html>

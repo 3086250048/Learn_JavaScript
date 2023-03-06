@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            function myclick(id, fun) {
+                var bt = document.getElementById(id);
+                bt.onclick = fun;
+            };
+
+            myclick('bt1', function () {
+                var box1 = document.getElementById('box1');
+                /*
+                1.以下这些属性返回的值都是不带px的可以直接计算
+                2.获取的高度和宽度包括内容区和内边距(不包括边框)
+                3.以下两个属性都是只读的
+                */
+                alert(box1.clientHeight);
+                alert(box1.clientWidth);
+
+            });
+
+            myclick('bt2', function () {
+                var box1 = document.getElementById('box1');
+                //和上面两个属性类似，但是计算时包括边框
+                alert(box1.offsetHeight);
+                alert(box1.offsetWidth);
+
+            });
+
+
+            myclick('bt3', function () {
+                var box1 = document.getElementById('box1');
+                /*
+                  offsetParent
+                  -用来获取离自己层级最近并且开启了定位的祖先元素
+                      如果所有的祖先元素都没有开定位，则返回body*/
+                alert(box1.offsetParent.id);
+            });
+
+
+            myclick('bt4', function () {
+                var box1 = document.getElementById('box1');
+                /* offsetLeft
+                    -当前元素相对于定位父元素的水平偏移量*/
+                alert(box1.offsetLeft);
+            });
+
+
+            myclick('bt5', function () {
+                var box1 = document.getElementById('box1');
+                /*offsetTop
+                    -当前元素相对于定位父元素的垂直偏移量
+                */
+                alert(box1.offsetTop);
+
+            });
+
+            myclick('bt6', function () {
+                var box1 = document.getElementById('box1');
+                /*scrollWidth
+                    -获取滚动区域的宽度，不包括边框
+                */
+                alert(box1.scrollWidth);
+
+            });
+
+            myclick('bt7', function () {
+                var box1 = document.getElementById('box1');
+                /*scrollHeight
+                    -获取滚动区域的高度，不包括边框
+                */
+                alert(box1.scrollHeight);
+
+            });
+
+            myclick('bt8', function () {
+                var box2 = document.getElementById('box2');
+                /*scrollLeft
+                    -获取水平滚动条的移动距离
+                */
+                alert(box2.scrollLeft);
+
+            });
+
+            myclick('bt9', function () {
+                var box2 = document.getElementById('box2');
+                /*scrollTop
+                    -获取垂直滚动条的移动距离
+                */
+                alert(box2.scrollTop);
+
+            });
+
+
+
+        };
+
+
+    </script>
+    <style>
+        #box1 {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            padding: 10px;
+            border: 10px yellow solid;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 200px;
+            position: relative;
+            left: 100px;
+            background-color: #bfc;
+            padding: 100px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="bt1">获取可见宽度和高度(不包括边框)</button>
+    <button id="bt2">获取可见宽度和高度(包括边框)</button>
+    <button id="bt3">获取离自己层级最近并且开启了定位的祖先元素</button>
+    <button id="bt4">获取当前元素相对于定位父元素的水平偏移量</button>
+    <button id="bt5">获取当前元素相对于定位父元素的垂直偏移量</button>
+    <button id="bt6">获取元素整个滚动区域的宽度</button>
+    <button id="bt7">获取元素整个滚动区域的高度</button>
+    <button id="bt8">获取水平滚动条的移动距离</button>
+    <button id="bt9">获取垂直滚动条的移动距离</button>
+    <div id="box2">
+        <div id="box1">
+        </div>
+    </div>
+
+</body>
+
+</html>

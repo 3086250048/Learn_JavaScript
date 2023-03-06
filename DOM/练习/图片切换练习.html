@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var bt_next = document.getElementById("next");
+            var bt_back = document.getElementById("back");
+            var img0 = document.getElementById("img0");
+            var p = document.getElementsByTagName("p")[0];
+            var img_count = 6;
+            var img_index = 1;
+            bt_next.onclick=function(){
+                img_index++;
+                if(img_index>img_count){img_index=1};
+                img0.src="./资源/" + img_index +  ".jpg";
+                p.innerHTML="这是第"+img_index+"张图片"
+            };
+            bt_back.onclick=function(){
+                img_index--;
+                if(img_index<=0){img_index=img_count};
+                img0.src="./资源/" + img_index +  ".jpg";
+                p.innerHTML="这是第"+img_index+"张图片"
+            };
+        };
+    </script>
+    <style>
+            .box1{
+                width: 300px;
+                margin: 0 auto;
+                margin-top: 100px;
+                background-color: #bfc;
+                padding: 10px;
+                border-radius: 10px;
+                text-align: center;
+            }
+            #img0 {
+                width: 300px;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <p>这是第1张图片</p>
+        <img id="img0" src="./资源/1.jpg" >
+        <button id="next">下一张</button>
+        <button id="back">上一张</button>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <script>
+// 常见的运算符+ - * / %
+// 当对非Null类型(除了字符类型在加法运算中以外)进行运算时，会将这些值转换为Number后再处理
+//任何值和NaN做运算都会等于NaN
+//如果进行+运算时，有一个是字符串类型，则会将类外一个也转换为字符类型进行拼接，而不会进行数值运算。
+//如果有三个参数进行+运算，如 1+2+'3',则遵循从左往右的原则先进性数字运算再进行字符串拼接,反之同理
+        // var a=true;
+        // var b ='456';
+        // alert(a+b);
+
+//+ - 号可以直接添加到变量前
+//         //先转换为负数
+//         var c=123;
+//         c=-c;
+//         alert(c);
+//         //再转换为正数
+//         c=-c;
+//         alert(c);
+//         //也可以通过这种方式转换数据类型
+//         a='121';
+//         a=+a;
+//         alert(a);
+//         var result =1 + +'2'+3;
+//         alert(result)
+// //自增运算符
+//         var d =1;
+//         var e=1;
+//         //++a,a++的区别,--同理
+//         alert(d++);//结果为1
+//         alert(d);//结果为2
+
+//         alert(++e)//结果为2
+//         alert(e)//结果为2
+// //逻辑运算符
+//非运算
+// var a  =true;
+// a=!a;
+// alert(a);
+// //快速将其他数据类型转为布尔类型
+// var b ='123';
+// b=!!b;
+// alert(b);
+// //与运算 JS的与运算如果第一个结果为False则不会检查第二个
+// var result_0 = !!'1' && !!'';
+// alert(result_0);
+// //或运算 JS的或运算如果第一个结果为True则不会检查第二个
+// var result_1 = !!'1' || !!'';
+// alert(result_1);
+//判断是否相等
+//通过 == 来进行判断是否相等，对于不同的数据类型会自动转换
+alert('1' == 1);
+//Nan与任何值都不相等，包括本身，可以通过isNan()函数判断是否为Nan
+alert(isNaN(10));
+//=== 三个等号表示全等，如果类型不同则直接返回false，不会进行类型转换
+alert('1' === 1);
+
+// 条件运算符
+// 判断条件?True执行语句:False执行语句;
+// 一个例子
+var a=10;
+var b=20;
+//两个数值中快速取出最大值
+var max_0 = a>b?a:b;
+alert(max_0);
+//三个数值中快速取出最大值(sa)
+c=1;
+d=2222;
+e=3;
+var max_1 = c>d?(c>e?c:e):(d>e?d:e);
+alert(max_1);
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

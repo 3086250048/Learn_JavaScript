@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            
+            var box0=document.getElementById('box0');
+            
+            //按下方向键控制方向
+            document.onkeydown=function(e){
+                window.direction=e.key;
+            };
+
+            //定时器控制不同方向的速度
+                setInterval(function(){
+                var box0_top=parseInt( getComputedStyle(box0,null).top);
+                var box0_left=parseInt(getComputedStyle(box0,null).left);
+                switch(window.direction){
+                    case 'w':
+                    box0.style.top = box0_top-10+'px';
+                    break;
+                    case 's':
+                    box0.style.top = box0_top+10+'px';
+                    break;
+                    case 'a':
+                    box0.style.left = box0_left-10+'px';
+                    break;
+                    case 'd':
+                    box0.style.left = box0_left+10+'px';
+                    break;
+
+                }
+            },30);
+
+            //松开按键停止移动
+            document.onkeyup=function(){
+                window.direction=0;
+            };
+
+            
+        };
+        
+    </script>
+    <style>
+        #box0{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <div id="box0"></div>
+</body>
+</html>

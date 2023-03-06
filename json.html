@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            /*
+                json就是特殊格式的字符串，任何语言都能识别，并且能转换为任何语言中的对象
+                json主要用于不同语言的数据交互
+                -J S O N
+                Java Script Object Notation (JS对象表示法)
+                当将JS的对象转为json时，属性名和属性值必须加双引号
+                JSON分类
+                    -对象{}
+                    -数组[]
+                JSON中允许的值
+                    1.字符串
+                    2.数值
+                    3.布尔
+                    4.null
+                    5.普通对象(不能是函数)
+                    6.数组
+            */
+            var js_0='{"name":"czz","age":"18","gender":"男"}';
+            var js_1='[1,2,3]'
+
+            /*将JSON字符串转换为JS中的对象
+                在JS中，为我们提供了一个工具类就叫JSON
+                这个对象可以帮助我们将一个JSON转换为JS对象，或者将JS对象转换为JSON
+                需要一个JSON字符串作为参数
+            */
+            //JSON--->JS对象
+           var obj = JSON.parse(js_0);
+           alert(obj.name);
+           var arr=JSON.parse(js_1);
+           alert(arr[0]);
+
+            /*
+                将JS对象转换为JSON
+                JSON.stringify(),会自动加双引号
+            */
+
+            var str=JSON.stringify(obj);
+            alert(str);
+        
+        };
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

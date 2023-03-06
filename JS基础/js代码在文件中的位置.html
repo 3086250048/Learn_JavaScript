@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 将外部的js代码引入应用
+    script标签如果用于引入外部文
+    件则无法编写代码，需要重新创建
+    一个script标签 -->
+    <script src="./script.js"></script>
+    <script>
+    // 在script中应用
+        // 控制浏览器弹出警告框
+        alert("hello word");
+        //向body中输出一个内容
+        document.write("你好");
+        // 向控制台输出内容
+        console.log("你好");
+    /*
+        js注意 
+        ①JS中//为单行注释\/**\/为多行注释
+        ②JS中以;结尾
+        ③JS中会忽略多个空格和换行
+
+    */
+    </script>
+</head>
+<body>
+    <!-- 在标签中应用 -->
+    <button onclick="alert('不要点击我');">点击我</button>
+    <a href="javascript:alert('点击我');">点击我</a>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var body=document.body;
+            var outer=document.getElementById('outer');
+            var inner=document.getElementById('inner');
+            /*
+            事件的冒泡
+                -当后代元素被触发时，祖先的相同事件也会被触发。
+                -在开发中你大部分冒泡是有用，如果不希望发生冒泡可以取消
+
+            */
+            body.onclick=function(){
+                alert('我是'+'body'+'的单击响应函数')
+            }
+            outer.onclick=function(e){
+                  //取消事件冒泡
+                  e.cancelBubble= true;
+                alert('我是'+'outer'+'的单击响应函数')
+            }
+            inner.onclick=function(e){
+                  //取消事件冒泡
+                  e.cancelBubble= true;
+                alert('我是'+'inner'+'的单击响应函数')
+            }
+        };
+    </script>
+    <style>
+        #outer{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+        }
+        #inner{
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+
+        }
+    </style>
+</head>
+<body>
+    我是body
+    <div id="outer">
+        我是outer
+        <div id="inner">
+            我是inner
+        </div>
+    </div>
+</body>
+</html>

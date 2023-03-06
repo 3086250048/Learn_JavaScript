@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var img_lis = document.getElementById('img_lis');
+            var num = 0;
+            var flag = false;
+            var bt0 = document.getElementById('bt0');
+            var bt1 = document.getElementById('bt1');
+            /*每单击一次开启一个定时器，会导致多次点击后图片切换越来越快，
+            并且新开启的定时器的返回值会覆盖原先的导致无法停止定时器,所以要使用
+            flag来限制一下,或者在开始的时候停止之前的定时器
+            */
+            bt0.onclick = function () {
+                clearInterval(window.result);
+                window.result = setInterval(function () {
+                    var new_num = num % 6 + 1;
+                    img_lis.src = '../DOM/资源/' + new_num + '.jpg';
+                    num++;
+                }, 1000);
+
+
+
+            };
+            bt1.onclick = function () {
+                /*
+                    点击按钮以后，停止图片自动且混啊，关闭定时器
+                    如果一个参数是有效的定时器标识，则停止对应的定时器
+                    如果参数不是一个有效标识，则什么也不做
+                */
+
+                clearInterval(window.result);
+
+            };
+
+
+
+        };
+    </script>
+    <style>
+        #img_lis {
+            width: 200px;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            border: 1px solid black;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div><img src="../DOM/资源/1.jpg" id="img_lis"></div>
+    <button id="bt0">开始</button>
+    <button id="bt1">结束</button>
+</body>
+
+</html>

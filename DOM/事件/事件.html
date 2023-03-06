@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+    </script>
+</head>
+<body>
+    <!-- 单击 -->
+    <!-- <button id="bt0" onclick="alert('你点击了bt0');">按钮bt0</button> -->
+    <!-- 双击 -->
+    <!-- <button id="bt1" ondblclick="alert('你点击了bt1');">按钮bt1</button> -->
+    <!-- 鼠标移入 -->
+    <!-- <button id="bt2" onmousemove="alert('你点击了bt2');">按钮bt2</button> -->
+    <!-- 不推荐以上写法 -->
+    <button id="bt3">按钮</button>
+    <script>
+  
+       //获取bt3
+       var bt3 = document.getElementById("bt3");
+      // 可以为按钮对象绑定对应的事件再绑定处理函数的形式来响应事件
+      //单击响应函数
+        bt3.onclick = function(){
+            alert("单击了bt3");
+        };
+        
+    </script>
+</body>
+</html>

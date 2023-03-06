@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+        构造函数的执行流程
+            1.立刻创建一个新的对象
+            2.将新建的对象设置为函数中的this，在构造函数中使用this来引用新的对象
+            3.逐行执行函数中的代码
+            4.将新建的对象作为返回值返回
+        
+        使用同一个构造函数创建的对象我们称为一类对象，也将构造函数称为一个类。
+
+        this的情况:
+            1.当以函数的形式调用时，this是window
+            2.当以方法的形式调用时，谁调用方法this就是谁
+            3.当以构造函数形式调用时，this就是新创建的那个对象
+        */
+
+       function Dog(name,age){
+            this.name=name;
+            this.age=age;
+            this.action = function(){
+                alert('汪汪')
+            };
+       };
+
+       var dog_0 = new Dog('小旺',18);
+       alert(dog_0.name)
+       dog_0.action();
+
+    /*
+       使用instanceof可以检查一个对象是否属于一个类的实例
+    */
+   alert(dog_0 instanceof Dog);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

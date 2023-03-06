@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+       
+            function myclick(id,fun){
+                var bt=document.getElementById(id);
+                bt.onclick=fun;
+            };
+
+            myclick('bt1',function(){
+                //通过style属性设置的样式都是内联样式（即在标签中设置的样式），具有较高优先级
+                var box1=document.getElementById('box1'); 
+                box1.style.width="200px";
+                box1.style.height="200px";
+                box1.style.backgroundColor='blue';
+           
+            });
+
+            myclick('bt2',function(){
+                var box1=document.getElementById('box1'); 
+                //注意这里只能读取内联样式（即在标签中设置的样式）
+                alert(box1.style.width);
+            });
+
+            myclick('bt3',function(){
+                var box1=document.getElementById('box1'); 
+                //以下这个方法只有ie支持
+                // alert(box1.currentStyle.width);
+                
+                /*建议使用以下方法（兼容ie8以外的浏览器）,参数为(获取样式的元素,伪元素(一般为null))
+                    改方法返回一个对象，对象中封装了当前元素对应的样式。
+                */
+                var style_obj = getComputedStyle(box1,null)
+                //通过obj.属性的方式获取具体的样式的值,并且会返回真实的值，不会返回auto之类的值
+                alert(style_obj.width);
+                alert(style_obj.height);
+                alert(style_obj.backgroundColor);
+
+                //我们可以写一个兼容性函数
+                function getstyle(obj,name){
+                    /*判断浏览器是否有getComputedStyle方法，注意要加window，因为
+                    找变量是沿着作用域找，找不到报错，找属性是沿着原型链找，找不到
+                    返回undefined
+                    */
+                    if(window.getComputedStyle){
+                        return style = getComputedStyle(obj,null)[name];
+                         
+                    }else{
+                        return obj.cuurentStyle[name];
+                     
+                    }
+                }
+
+                //通过以上两个方式读取的样式都是只读的无法修改
+            });
+
+
+
+
+        };
+    </script>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red ;
+        }
+    </style>
+</head>
+<body>
+    <button id="bt1">改宽高颜色</button>
+    <button id="bt2">读取内联样式</button>
+    <button id="bt3">读取选择器样式</button>
+    <div id="box1" ></div>
+</body>
+</html>

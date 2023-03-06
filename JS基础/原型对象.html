@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+        原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
+        我们可以将对象中共有的内容，统一设置到原型对象中
+
+        当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，如果
+        没有则会去原型对象中寻找，如果找到则直接使用
+
+        以后我们创建构造函数时，可以将这些对象共有的属性和方法统一添加到构造函数的原型
+        对象中，这样不用为每一个对象分别添加，也不会影响到全局作用域，就可以使
+        每个对象具有这些属性和方法了。
+        */
+       function Cat(name,age){
+        this.name=name;
+        this.age=age;
+        //如果想不想使用原型对象的方法，则可以在构造函数中重写
+        this.action=function(){
+            alert(this.age +'的'+this.name+'说喵喵喵喵~');
+        };
+       }
+       //将共同拥有的属性和方法写到构造函数的原型对象中
+       Cat.prototype.action=function(){
+        alert(this.age +'的'+this.name+'说喵~');
+       };
+       Cat.prototype.attribute=function(){
+        alert(this.name+"说:我怕水");
+    };
+       var cat_0 = new Cat('小喵',18);
+       var cat_1= new Cat('小卡',17);
+       cat_0.action();
+       cat_1.action();
+       cat_0.attribute();
+       cat_1.attribute();
+       /*属性名 in 对象名 用于检查对象中是否
+       含有某个属性 ，如果对象中没有而原型中有则也会返回true*/
+       alert('attribute' in cat_0);  
+       //可以使用hasOwnProperty()来检查对象自身中是否含有某个属性
+       alert(cat_0.hasOwnProperty("attribute"));
+        
+
+       
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

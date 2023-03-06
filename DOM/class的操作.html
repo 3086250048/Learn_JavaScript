@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var bt0=document.getElementById('bt0');
+            var box0=document.getElementsByClassName('box0')[0]
+
+            bt0.onclick=function(){
+                /*
+                    通过style属性来修改元素的样式，每修改一个样式，浏览器就需要重新渲染一次页面
+                    这样执行性能比较差，而且这种形式不容易修改多个元素样式
+                */
+                // box0.style.width='100px';
+                // box0.style.backgroundColor='red';
+                // box0.style.height='100px';
+                /*
+                    一行代码同时修改多个样式，通过修改元素的class间接的修改元素的样式
+                    这样以来，只需要修改一次就可以同时修改多个样式，浏览器只需要重新渲染页面一次
+                    性能较好，并且可以将表项和行为分离。
+                */
+            //添加class
+                //addClass(box0,'box1')
+            //判断是否存在一个class
+                //hasClass(box0,'box0')    
+            //删除class
+               //removeClass(box0,'box1')
+            //切换class
+                toggleClass(box0,'box1')
+            };
+
+            function addClass(obj,class_name){
+                //判断是否包含添加的class防止重复添加
+              if(!hasClass(obj,class_name)){
+                 /*
+                += ：如果只想修改某些个样式，则可以通过+= 的方式添加类属性，空格是为了让类名拼成
+                字符串的时候不连接在一起。
+               */
+                obj.className += " "+class_name;
+              }
+               
+            }
+
+            //判断元素是否包含某个Class
+            function hasClass(obj,class_name){
+               // var reg=/\bcn\b/;
+               // return reg.test(obj.className);
+                
+               var reg = new RegExp('\\b'+class_name+'\\b')
+               return reg.test(obj.className)
+            }  
+
+            //删除元素指定的class
+            function removeClass(obj,class_name){
+                if(hasClass(obj,class_name)){
+                    var reg=new  RegExp('\\b'+class_name+'\\b')
+                    obj.className = obj.className.replace(reg,'');
+                }
+            }
+
+            /*
+                切换class
+                    如果元素中有该class则添加
+                    如果元素中没有该class则删除
+            */
+            function toggleClass(obj,class_name){
+                if(hasClass(obj,class_name)){
+                    removeClass(obj,class_name)
+                }else{
+                    addClass(obj,class_name)
+                }
+            };
+        };
+    </script>
+    <style>
+        .box0{
+            width: 50px;
+            height: 50px;
+            background-color: aquamarine;
+        }
+        .box1{
+   
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="bt0">点击</button>
+    <div class="box0 box1"></div>
+</body>
+</html>

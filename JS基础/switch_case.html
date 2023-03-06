@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /* switch .... case 语句再执行的时候会依次将case后的表达式和switch后的条件
+        表达式的值进行全等(也就是 === )比较，如果比较结果为true，则从当前case开始执行
+        代码，并且当前case后的所有代码都会执行，可以通过break来限制执行的代码范围，
+        default表示默认没有匹配case条件时所执行的代码。
+        */
+        var num_0= +prompt();
+        switch(num_0){
+            case 1:
+                alert('数值为1');
+                break;
+            case 2:
+                alert('数值为2');
+                break;
+            case 3:
+                alert('数值为3');
+                break;
+            default:
+                alert('其他数值');
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

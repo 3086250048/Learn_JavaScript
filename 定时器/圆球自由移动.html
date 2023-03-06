@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function move(obj, direction, step, threshold, fps) {
+        //每次点击时，先关闭上一次的定时器，防止div的速度越来越快
+        clearInterval(obj.result);
+    obj.result = setInterval(function () {
+        // 这里判断不能用box0.style.marginleft，因为默认读取的是内联样式中的属性
+        if (parseInt(getComputedStyle(obj, null)[direction]) < threshold) {
+            obj.style[direction] = parseInt(getComputedStyle(obj, null)[direction]) + step + 'px';
+            //防止因为步长的原因超出阈值
+            if (parseInt(getComputedStyle(obj, null)[direction]) >= threshold) {
+                obj.style[direction] = threshold + 'px';
+                //关闭定时器
+                clearInterval(obj.result);
+            }
+        } else {
+            obj.style[direction] = parseInt(getComputedStyle(obj, null)[direction]) - step + 'px';
+            //防止因为步长的原因超出阈值
+            if (parseInt(getComputedStyle(obj, null)[direction]) <= threshold) {
+                obj.style[direction] = threshold + 'px';
+                //关闭定时器
+                clearInterval(obj.result);
+            }
+        }
+
+
+    }, fps)
+
+
+};
+
+        window.onload = function () {
+            var box0 = document.getElementById('box0');
+            var bt0 = document.getElementById('bt0');
+
+            bt0.onclick = function () {
+                move(box0, 'top', 5, 0, 10);
+            };
+            bt1.onclick = function () {
+                move(box0, 'left', 5, 0, 10);
+            };
+            bt2.onclick = function () {
+                move(box0, 'left', 5, 480, 10);
+            };
+            bt3.onclick = function () {
+                move(box0, 'top', 5, 480, 10);
+            };
+        };
+    </script>
+    <style>
+        * {
+            margin: 0 0;
+        }
+
+        #box0 {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+
+        }
+
+        #outer {
+            width: 500px;
+            border: 1px black solid;
+            height: 500px;
+            position: absolute;
+            left: 100px;
+            top: 50px
+        }
+
+        #control {
+            position: absolute;
+            left: 800px;
+            top: 100px
+        }
+
+        button {
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="control">
+        <button id="bt0">上</button>
+        <button id="bt1">左</button>
+        <button id="bt2">右</button>
+        <button id="bt3">下</button>
+    </div>
+    <div id="outer">
+        <div id="box0"></div>
+    </div>
+
+
+
+</body>
+
+</html>

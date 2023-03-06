@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+        浏览器加载页面的时候会自上向下的方式加载的
+        读取到一行就会运行一行，那么会导致代码执行
+        时页面还没有加载。
+        */
+    /*   此时需要添加一个页面加载函数window.onload函数，这样以来会等待页面加载完成
+         之后再执行代码    
+    */
+       window.onload=function(){
+        var bt0 = document.getElementById("bt0");
+        bt0.onclick=function(){
+            alert("单击了bt0");
+        };
+       };
+    </script>
+</head>
+<body>
+    <button id="bt0">按钮</button>
+   
+</body>
+</html>

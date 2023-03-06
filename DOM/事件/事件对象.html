@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var div0=document.getElementById('area0');
+            var div1=document.getElementById('area1');
+            /*
+                onmousemove
+                -改事件将会在鼠标移动时被触发
+
+                事件对象
+                -当事件响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数
+                在事件对象中封装了当前事件相关的一切信息，比如:鼠标的坐标、键盘的输入
+            */ 
+           div0.onmousemove=function(e){
+                var x=e.clientX;
+                var y=e.clientY;
+                div1.innerHTML='X:'+x+' '+'Y'+y;
+
+           };
+        };
+    </script>
+    <style>
+        #area0 {
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        #area1 {
+            margin-top: 10px;
+            width: 300px;
+            height: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="area0"></div>
+    <div id="area1"></div>
+</body>
+</html>

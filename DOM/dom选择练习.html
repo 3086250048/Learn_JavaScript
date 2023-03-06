@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+
+            function button_onclick(id, fun) {
+                var button = document.getElementById(id);
+                button.onclick = fun;
+            };
+
+
+            //全选按钮
+            button_onclick("qx", function () {
+                //获取4歌复选框
+                var items = document.getElementsByName('items');
+                var input_first = document.getElementById('input_first');
+                //设置items复选框为选中状态
+                for (var i = 0; i < items.length; i++) {
+                    //设置为选中状态
+                    items[i].checked = true;
+                }
+                input_first.checked = true;
+            });
+
+
+            //全不选按钮
+            button_onclick("qbx", function () {
+                //获取4歌复选框
+                var items = document.getElementsByName('items');
+                var input_first = document.getElementById('input_first');
+                //设置items复选框为不选中状态
+                for (var i = 0; i < items.length; i++) {
+                    //设置为不选中状态
+                    items[i].checked = false;
+                }
+                input_first.checked = false;
+            });
+
+            //反选按钮
+            button_onclick("fx", function () {
+                //获取4个复选框
+                var items = document.getElementsByName('items');
+                var input_first = document.getElementById('input_first');
+                input_first.checked=true;
+                //设置items复选框为不选中状态
+                for (var i = 0; i < items.length; i++) {
+                    items[i].checked = !items[i].checked;
+                    if(!items[i].checked){
+                            input_first.checked=false;   
+                    }
+                }
+               
+            });
+
+            //提交按钮
+            button_onclick("tj", function () {
+                var play_lis = [];
+                //获取4歌复选框
+                var items = document.getElementsByName('items');
+                //获取复选框下面的兄弟元素的文本
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].checked) {
+                        play_lis.push(items[i].nextElementSibling.innerHTML)
+                    }
+
+                }
+                alert(play_lis);
+            });
+
+
+
+            //第一个复选框
+            var input_first = document.getElementById('input_first');
+            var items = document.getElementsByName('items');
+            input_first.onclick = function () {
+                if (input_first.checked) {
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].checked = this.checked;
+                    }
+                } else {
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].checked = this.checked;
+                    }
+                }
+
+            };
+            //给四个items复选框设置onclick函数的具体处理事务
+            for(var i=0;i<items.length;i++){      
+                items[i].onclick=function(){
+                    input_first.checked=true;
+                    for(var j=0;j<items.length;j++){
+                        if(!items[j].checked){
+                            input_first.checked=false;
+                            break;
+                        }
+                    };
+
+                }
+            };
+ 
+        }
+    
+      
+
+
+
+    </script>
+</head>
+
+<body>
+    <span>你的爱好运动是？</span>
+    <input type="checkbox" id="input_first"><span>全选/全不选</span>
+    <div id="play">
+        <input type="checkbox" name="items" id="zq"><span>足球</span>
+        <input type="checkbox" name="items" id="lq"><span>篮球</span>
+        <input type="checkbox" name="items" id="ymq"><span>羽毛球</span>
+        <input type="checkbox" name="items" id="ppq"><span>乒乓球</span>
+    </div>
+    <div id="button">
+        <button id="qx">全选</button>
+        <button id="qbx">全不选</button>
+        <button id="fx">反选</button>
+        <button id="tj">提交</button>
+    </div>
+</body>
+
+</html>

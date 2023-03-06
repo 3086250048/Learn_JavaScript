@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+       <script>
+        // // {转换为字符串}
+        // //方法一:ToString()方法
+        // var a=123;
+        // // 该方法有返回值，不会影响原来的变量，需要通过赋值转换
+        // a=a.toString();
+        // alert(typeof a);
+        // alert(a);
+        // // null 和 undefined类型数据无法调用tostring()方法转换类型
+        
+        // //方法二 String()方法
+        // var b = 123;
+        // b=String(b);
+        // alert(typeof b);
+        // alert(b);
+        // //null和undefined 都可以调用String()方法转换为字符串.
+        // c=null;
+        // c=String(c);
+        // alert(typeof c);
+        // alert(c);
+        // d=undefined;
+        // d=String(d);
+        // alert(typeof d);
+        // alert(d);
+       
+        //{转换为number类型}
+        
+        //方法一:Number()方法
+        /*  1.如果为字符串中的内容为阿拉伯数字可以转换为number类型。
+            2.如果字符串中包含非阿拉伯数字则会变为NaN(表示非数字类型,注意:NaN本身还是属于数值类型)
+            3.如果为空字符串或者群都为空格的字符串则会转换为0。
+            4.逻辑转换为数字类型，True为1，false为0
+            5.Null转换为数字为0，undefined 转换为数字类型后为NaN
+            */
+            
+        // var e = '123';
+        // e=Number(e);
+        // alert(typeof e);
+        // alert(e);
+
+        // var f='你好';
+        // f=Number(f);
+        // alert(typeof f);
+        // alert(f);
+
+        // var g='';
+        // var h='   ';
+        // g = Number(g);
+        // h= Number(h);
+        // alert(typeof g);
+        // alert(typeof h);
+        // alert(g);
+        // alert(h);
+
+        // var i = true;
+        // i=Number(i);
+        // alert(typeof i);
+        // alert(i);
+        
+        // var j = null;
+        // j=Number(j);
+        // alert(typeof j);
+        // alert(j);
+
+        // var k = undefined;
+        // k=Number(k);
+        // alert(typeof k);
+        // alert(k);
+
+        // 转换方式二:parseInt将字符串转换为整数,只取到整数位。
+        // parseFloat将字字符串转换为一个浮点数, 既可以取整数位，也可以取小数位。 
+        //对非String类型使用以上量个方法，会先转换为String然后再操作。      
+        // a='123.123px';
+        // // a=parseInt(a);
+        // a=parseFloat(a);
+        // alert(typeof a);
+        // alert(a);
+
+        //{将其他类型转换为布尔值}
+        // 数字转布尔，除了0和NaN，其余都是True
+        // 字符串转布尔，除了空串，其余都为True
+        //  null和undefined 都是False
+        //Object类型也会转换为True
+        var a=123;
+        a=Boolean(a);
+        alert(a);
+
+
+       </script>  
+       
+       
+</head>
+<body>
+    
+</body>
+</html>

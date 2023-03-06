@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // 查找id为bj的节点
+            var bt_bj = document.getElementById("bj");
+            bt_bj.onclick = function () {
+                alert(bt_bj.innerHTML);
+            };
+            //查找id为bt2的节点并查找所有li节点
+            var bt2 = document.getElementById("bt2");
+            bt2.onclick = function () {
+                //查找所有li节点，并通过数组的形式返回，即使查找到的标签只有一个
+                var lis = document.getElementsByTagName("li");
+                //打印li中的内容
+                for (var i = 0; i < lis.length; i++) {
+                    alert(lis[i].innerHTML);
+                };
+
+            };
+            //获取bt3
+            var bt3 = document.getElementById("bt3");
+            //为bt3绑定单击事件
+            bt3.onclick = function () {
+                //查找name=gender的所有节点，通过数组返回
+                var inputs = document.getElementsByName("gender");
+                for (var i = 0; i < inputs.length; i++) {
+                    // innerHTML对于自结束标签没有意义,这时候直接读标签中的属性即可
+                    // 读取class时要用className
+                    alert(inputs[i].value)
+                };
+            };
+
+            //获取id为city下的所有li节点
+            var bt4 = document.getElementById("bt4");
+            var div_city = document.getElementById("city");
+            var lis_city = div_city.getElementsByTagName("li");
+            bt4.onclick = function () {
+                for (var i = 0; i < lis_city.length; i++) {
+                    alert(lis_city[i].innerHTML)
+                };
+            };
+            //返回id=city下的所有子节点
+            var bt5 = document.getElementById("bt5");
+            bt5.onclick = function () {
+                /*获取id=city下的所有子节点
+                会包括所有文本节点，包括标签之间的换行。
+                */
+                // var city_childs = div_city.childNodes;
+                // alert(city_childs.length)
+                // for (var i = 0; i < city_childs.length; i++) {
+                //     alert(city_childs[i].innerHTML);
+                // };
+                //返回所有浏览器的子元素
+                var city_childs = div_city.children;
+                for (var i = 0; i < city_childs.length; i++) {
+                    alert(city_childs[i].innerHTML);
+                };
+            };
+
+            //返回id=city下的第一个子节点(节点包括文本，元素不包括)
+            var bt6 =document.getElementById("bt6");
+            bt6.onclick=function(){
+                //获取当前元素的第一个子节点，包括空格
+                // var first_child = div_city.firstChild;
+                // alert(first_child.innerHTML);
+                //如果要返回当前元素的第一个子元素，则使用下面的属性
+                var first_child = div_city.firstElementChild;
+                alert(first_child.innerHTML);
+                //如果想获取最后一个就用就将属性中的first关键字替换为last
+            };
+
+
+            //上面写的代码，可以写成一个函数
+            function bt_onclick(id,fun){
+                var mybt= document.getElementById(id);
+                mybt.onclick=fun;
+            };
+            //为id为bt7的按钮绑定一个单击响应函数，并返回box2的父节点
+            bt_onclick('bt7',function(){
+                //获取box2
+                var box2 = document.getElementById("box2");
+                //获取box2的父节点
+                var box1 = box2.parentNode;
+                //返回box1 html标签里的内容
+                alert(box1.innerHTML);
+                //返回box1 html标签里除了html元素以外的内容
+                alert(box1.innerText);
+            });
+
+            //获取id为box1的前一个兄弟节点
+            bt_onclick('bt8',function(){
+                var box1=document.getElementById('box1');
+                // //由于空格也是一个节点，所有获取到的时一个text节点为undefined
+                // var city = box1.previousSibling;
+                // //打印
+                // alert(city);
+
+                //返回前一个兄弟元素，不包括空白文本
+                var city=box1.previousElementSibling;
+                alert(city.innerHTML);
+            });
+
+            //读取id为username的value值
+            bt_onclick('bt9',function(){
+                var input_username = document.getElementById('username');
+                var value = input_username.value;
+                alert(value)
+            });
+
+            //设置id为username的value值
+            bt_onclick('bt10',function(){
+                var input_username = document.getElementById('username');
+                input_username.value='请输入姓名'; 
+
+            });
+        };
+
+    </script>
+</head>
+
+<body>
+    <button id="bj">北京</button>
+    <button id="bt2">bt2</button>
+    <button id="bt3">返回name=gender的所有节点</button>
+    <button id="bt4">返回id=city下的所有li节点</button>
+    <button id="bt5">返回id=city下的所有子节点</button>
+    <button id="bt6">返回id=city下的第一个子节点</button>
+    <button id="bt7">返回box2的父节点</button>
+    <button id="bt8">返回box1的前一个兄弟元素</button>
+    <button id="bt9">读取id为username的value值</button>
+    <button id="bt10">设置id为username的value值</button>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <input type="radio" name="gender" value="male" />
+    Male
+    <input type="radio" name="gender" value="female" />
+    Female
+    <div id="city">
+        <li>北京</li>
+        <li>上海</li>
+        <li>广州</li>
+        <li>深圳</li>
+        <li>杭州</li>
+        <p>你好</p>
+    </div>
+    <div id="box1">
+        <div id="box2">111</div>
+    </div>
+    <input type="text" id="username" value="username">
+</body>
+
+</html>

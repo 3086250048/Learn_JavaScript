@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var bt0=document.getElementById('bt0');
+            bt0.onclick=function(){
+                /*
+                    go()
+                        -可以用来灵活的跳转页面
+                        1：向前跳转一个页面相当于forward()
+                        -1: 向后跳转一个页面相当于back()
+                        2:相当于向前跳转2个页面
+                        ....(以此类推)
+
+                */
+
+                history.go(-2);
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="bt0">回history1</button>
+</body>
+</html>

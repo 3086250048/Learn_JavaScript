@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var str='helol word';
+        //字符串再底层是以字符串进行保存的
+        alert(str[0])
+        //charat()获取指定位置的字符
+        alert(str.charAt(0));
+        //charcodeat()获取指定字符的编码
+        alert(str.charCodeAt(0));
+        //fromCharCode()根据字符编码取字符
+        alert(String.fromCharCode(0x2692))
+        //concat()拼接字符串并返回结果
+        var result = str.concat('bad');
+        alert(result);
+            /*indexof()可以检索一个字符串中是否含有指定内容,并返回第一次出现的索引，
+                -如果没有找到则返回-1
+                -第二个参数表示开始查找的位置
+             lastindexof()从后面往前面找
+                -如果没有找到则返回-1
+                -第二个参数表示开始查找的位置
+        */
+        result = str.indexOf('l',3);
+        alert(result);
+        // slice()，截取字符串，包含开始位置不包含结束位置
+        result = str.slice(1,2);
+        alert(result);
+        //split()将一个字符串拆分为数组,需要根据参数进行拆分
+        var str0='a,as1,sd,313'
+        var lis0=str0.split(",");
+        alert(lis0[0])
+        //大小写转换
+        var str1=str0.toUpperCase();
+        alert(str1);
+        var str2=str0.toLowerCase();
+        alert(str2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

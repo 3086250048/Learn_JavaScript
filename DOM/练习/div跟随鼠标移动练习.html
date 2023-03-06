@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var box0=document.getElementById('box0');
+            alert(document.documentElement)
+            document.onmousemove=function(e){
+                //鼠标相对于窗口的坐标
+                // var x=e.clientX;
+                // var y=e.clientY;
+                //鼠标相对于页面的坐标
+                var x=e.pageX;
+                var y=e.pageY;
+                box0.style.left=x+'px';
+                box0.style.top=y+'px';
+                box0.innerHTML='X:'+x+' '+'Y'+y;
+            };
+        };
+    </script>
+    <style>
+        #box0{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position:absolute;
+        }
+    </style>
+</head>
+<body >
+    <div id="box0"></div>
+</body>
+</html>

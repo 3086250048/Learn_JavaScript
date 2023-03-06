@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('box1');
+            var input=document.getElementsByTagName('input')[0];
+            box1.onscroll = function () {
+                if (parseInt(this.scrollHeight - this.scrollTop) == this.clientHeight) {
+                    //disable元素可以设置一个元素是否禁用，false为可用，true为禁用。
+                    input.disabled=false;
+                }
+            }
+        };
+    </script>
+    <style>
+        #box1 {
+            width: 400px;
+            height: 400px;
+            overflow-y: scroll;
+            margin: 50px auto;
+        }
+
+        #bottom {
+            width: 100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <h3>请仔细阅读以下协议</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque architecto id libero accusamus repellendus
+        expedita praesentium, consequatur, dignissimos aspernatur hic quisquam vero illo aliquid alias a. Cum laborum
+        aliquid cumque!
+        <br><br>
+    </div>
+    <div id="bottom">已知晓<input type="checkbox" disabled="disabled"></div>
+</body>
+
+</html>

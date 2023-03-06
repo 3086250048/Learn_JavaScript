@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            /*
+                拖拽流程
+                1.当鼠标在被拖拽元素上按下时开始拖拽 onmousedown
+                2.当鼠标开始移动时元素跟随鼠标移动onmousemove
+                3.当鼠标松开时，被拖拽元素固定在当前位置 onmouseup
+            
+            */
+
+            var box0 = document.getElementById('box0');
+            box0.onmousedown = function (e) {
+                var box_offsetx= e.clientX-box0.offsetLeft;
+                var box_offsety=e.clientY-box0.offsetTop;
+               //判断触发事件的节点名称是否为DIV标签
+                document.onmousemove = function (e) {
+                        if(e.target.nodeName == 'DIV'){
+                            box0.style.left=e.pageX-box_offsetx+'px';
+                             box0.style.top=e.pageY+-box_offsety+'px';
+                        }
+                       
+                   
+                
+                };
+            };
+
+            //需要给document绑定，避免box0的时候onmouseup事件被兄弟元素div1所截获，导致div0继续移动。
+            document.onmouseup = function () {
+                document.onmousemove = null;
+
+            };
+        };
+    </script>
+    <style>
+        #box0 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: absolute;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+        #output{
+            height: 300px;
+            width: 220px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    11111
+    <div id="box0"><textarea id="output"></textarea></div>
+    <div id="box1"></div>
+</body>
+
+</html>

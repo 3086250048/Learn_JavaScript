@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var num=1;
+        /*
+        延时调用:不马上执行，而是隔一段时间再执行，只执行一次
+        */
+       var result=setTimeout(function(){
+            alert(num++);
+       },3000);
+
+       /*
+        清除延时调用
+       */
+      clearTimeout(result);
+    };
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

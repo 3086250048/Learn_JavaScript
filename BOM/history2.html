@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var bt0=document.getElementById('bt0');
+            bt0.onclick=function(){
+                //作用和浏览器的回退按钮一样 
+                history.back();
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="bt0">向后跳转</button>
+    <a href="history3.html">去history3</a>
+</body>
+</html>

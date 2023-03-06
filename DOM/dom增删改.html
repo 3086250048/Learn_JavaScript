@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            function myonclick(id,fun){
+                var button=document.getElementById(id);
+                button.onclick=fun;
+            };
+
+            myonclick('one',function(){
+                //创建元素节点，需要标签名作为参数
+                   var div_0= document.createElement('div');
+                //创建文本节点,需要文本内容作为参数
+                   var text_0 = document.createTextNode('广州');
+                //向div_0节点中添加text_0子节点
+                   div_0.appendChild(text_0);
+                //获取outer div
+                var outer =document.getElementById('outer');
+                //再向outer div中添加div0子节点
+                outer.appendChild(div_0);
+            });
+
+            myonclick('two',function(){
+                //创建元素节点，需要标签名作为参数
+                   var div_0= document.createElement('div');
+                //创建文本节点,需要文本内容作为参数
+                   var text_0 = document.createTextNode('广州');
+                //向div_0节点中添加text_0子节点
+                   div_0.appendChild(text_0);
+                //获取beijing div。
+                var beijing =document.getElementById('beijing');
+                //获取outer div父节点
+                var outer = document.getElementById('outer');
+                //将广州插入bejing div之前,参数为(新节点,新节点之后的原有节点)
+                outer.insertBefore(div_0,beijing);
+                
+            });
+
+            myonclick('three',function(){
+                //创建一个广州节点
+                var gz = document.createElement('div');
+                //创建一个文本节点
+                var text =document.createTextNode('广州');
+                //将文本节点添加到gz节点下
+                gz.appendChild(text);
+                //获取bj节点
+                var bj=document.getElementById('beijing');
+                //获取outer div节点
+                var outer = document.getElementById('outer');
+                //将创建的广州节点替换beijing节点，参数为(新节点,被替换的子节点)
+                outer.replaceChild(gz,bj);
+            });
+
+
+            myonclick('four',function(){
+            //写法一
+                //获取outer div节点
+                // var outer = document.getElementById('outer');
+                // //获取beijing节点
+                // var bj = document.getElementById('beijing');
+                // //删除子节点
+                // outer.removeChild(bj);
+            //写法二
+                //beijing.父节点.删除子元素(beijing)
+                var bj = document.getElementById('beijing');
+                bj.parentNode.removeChild(bj);
+            });
+
+            myonclick('five',function(){
+                var city=document.getElementById('outer');
+                alert(city.innerHTML);
+
+            });
+
+            myonclick('six',function(){
+                var bj=document.getElementById('beijing');
+                /*这种方式添加标签，可以结合createElement和appendchild使用，
+                标签节点由createelement添加，文本由innerhtml赋值
+                最后由appendchild将标签添加到页面中*/
+                //bj.innerHTML+='<p>你好世界</p>'
+                //例子
+                var div=document.createElement('div');
+                div.innerHTML='你好世界'
+                bj.appendChild(div);
+
+            });
+
+        };
+    </script>
+    <style>
+        div{
+            background-color: aqua;
+            width: 200px;
+            margin: 0 auto;
+        }
+     
+    </style>
+</head>
+<body>
+    <button id="one">创建一个广州节点，添加到#outer div节点中</button>
+    <button id="two">创建一个广州节点，插入到#beijing节点前面</button>
+    <button id="three">创建一个广州节点，替换#beijing节点</button>
+    <button id="four">删除#beijing节点</button>
+    <button id="five">读取#outer节点内的代码</button>
+    <button id="six">设置#beijing节点内的代码</button>
+    <div id="outer">
+        <div id="city">#city</div>
+        <div id="beijing">#beijing</div>
+    </div>
+</body>
+</html>

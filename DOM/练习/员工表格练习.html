@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function del() {
+            //获取当前超链接所在行
+            var tr = this.parentNode.parentNode;
+            var employee_name = tr.children[0].innerText;
+            //删除之前弹出提示框,单击确认返回true，取消返回false
+            var result = confirm('确认删除' + employee_name + '的信息吗?')
+
+            if (result) {
+                //获取当前行的父元素，在由父元素删除当前行
+                tr.parentNode.removeChild(tr);
+            }
+        };
+        window.onload = function () {
+            function employee_delete() {
+                var a_lis = document.getElementsByTagName('a');
+                /*
+                    for循环会在页面加载完成之后立即执行
+                    而响应函数会在超链接被单击时才执行
+                    所以在del()函数中定义的时候不能用a_lis[i].parentNode.parentNode;
+                    的方式获取当前行所在tr，否则索引会超出，因为for循环执行完毕之后，索引
+                    必然会超粗。
+                */
+                for (var i = 0; i < a_lis.length; i++) {
+                    a_lis[i].onclick = del;
+                };
+            };
+
+            function employee_add() {
+                var submit = document.getElementById('submit');
+                submit.onclick = function () {
+                    //获取
+                    var emp_name = document.getElementById('xm').value;
+                    var emp_email = document.getElementById('yx').value;
+                    var emp_salary = document.getElementById('gz').value;
+                    //将tr添加到tbody中防止设置样式的时候出现差错。
+                    var emp_tbody = document.getElementsByTagName('tbody')[0];
+
+                    //创建
+                    var emp_tr = document.createElement('tr');
+                    var td_name = document.createElement('td');
+                    var td_email = document.createElement('td');
+                    var td_salary = document.createElement('td');
+                    var td_del = document.createElement('td');
+                    var a_del = document.createElement('a');
+
+                    //赋值
+                    td_name.innerText = emp_name;
+                    td_email.innerText = emp_email;
+                    td_salary.innerText = emp_salary;
+                    a_del.innerText = 'Delete';
+                    a_del.href = 'javascript:;'
+
+                    //为新添加的a标签绑定单击响应函数
+                    a_del.onclick=del;
+
+                    //添加
+                    td_del.appendChild(a_del);
+                    emp_tr.appendChild(td_name);
+                    emp_tr.appendChild(td_email);
+                    emp_tr.appendChild(td_salary);
+                    emp_tr.appendChild(td_del);
+                    emp_tbody.appendChild(emp_tr);
+
+
+                    /*以上的方式较为麻烦也可以采用直接在tr的innertext直接写标签的方法
+                    但是请不要在tbody的innerText中直接添加，否则会导致之前为a标签绑定的
+                    onclick函数失效（即把标签刷新了一遍,,但是没有为刷新的标签标签绑定单击函数）。
+                    */
+                };
+            }
+
+            employee_delete();
+            employee_add();
+
+
+        };
+    </script>
+    <style>
+        #employees {
+            border: 1px black solid;
+            margin: 50px auto;
+        }
+
+        #form {
+            width: 205px;
+            margin: 100px auto;
+            border: 1px black solid;
+        }
+
+        #submit {
+            margin-left: 75px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="employees">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>3101@163.com</td>
+            <td>4000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jack</td>
+            <td>3101@163.com</td>
+            <td>4000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Python</td>
+            <td>3101@163.com</td>
+            <td>4000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+    </table>
+    <div id="form">
+        <div><span>姓名</span><input type="text" id="xm" value="请输入姓名"></div>
+        <div><span>邮箱</span><input type="text" id="yx" value="请输邮箱"></div>
+        <div><span>工资</span><input type="text" id="gz" value="请输入工资"></div>
+        <button id="submit">提交</button>
+    </div>
+</body>
+
+</html>

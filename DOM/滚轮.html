@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var box0=document.getElementById('box0');
+            /*
+                当滚动滚轮时，如果浏览器由滚动条，滚动条就会随之滚动
+                这是浏览器的默认行为，如果不希望发生，则可以取消默认行为
+                可以通过再最后 return false 取消默认行为
+            */
+            box0.onmousewheel=function(e){
+                if(e.wheelDelta<0){ 
+                box0.style.height = box0.clientHeight+10+'px'
+            }else{
+                box0.style.height = box0.clientHeight-10+'px'
+                }
+
+                return false;
+               
+            };
+
+          
+        };  
+    </script>
+    <style>
+        #box0{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body style="height: 2000px;">
+    <div id="box0"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var bt0=document.getElementById('bt0');
+            // bt0.onclick=function(){
+            //     alert(1);
+            // };
+            // bt0.onclick=function(){
+            //     alert(2);
+            // };
+            /*
+                使用 对象.事件 = 函数 的方式来绑定响应函数
+                只能为同一个元素的一个事件绑定一个响应函数
+                不能绑定多个，如果绑定了多个则后面声明的
+                会覆盖前面的。
+
+                addEventListener()
+                    -通过这个方法也可以为元素绑定响应函数,并且可以同时为一个元素绑定多个相同的响应函数
+                    并且不会覆盖，先绑定的先执行，并且一些特殊的事件只能通过这种方式执行。
+                    -参数:
+                        1.事件的字符串 比如click(所有事件去除on关键字)
+                        2.回调函数(事件触发时，改函数会被调用)
+                        3.是否在捕获阶段触发事件，需要一个布尔值，一般都传入false
+
+            */
+            bt0.addEventListener('click',function(){
+                alert(1);
+            },false)
+            bt0.addEventListener('click',function(){
+                alert(2);
+            },false)
+
+            /*
+                兼容IE8和其他类型浏览器
+            */
+           function bindEvent(obj,event,fun){
+                if(obj.addEventListener){
+                    obj.addEventListener(event,fun,false);
+                }else{
+                    obj.attachEvent("on" + event ,function(){
+                        //在匿名函数中调用fun.call使调用fun的对象有window变为obj，而匿名函数由window调用只起到中转的作用
+                        fun.call(obj);
+                    })
+                };
+           };
+        };
+    </script>
+</head>
+<body>
+    <button id="bt0">click me</button>
+</body>
+</html>

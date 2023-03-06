@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // while循环语句，条件为true表示死循环
+        // n=1;
+        // while(true){
+        //     document.write('你好');
+        //     n+=1;
+        //     if(n==100){
+        //         break;
+        //     } 
+        // }
+        //for循环语句，如果for(;;)则表示死循环
+        // //倒三角
+        // for(i=0;i<100;i++){
+        //    for(j=0;j<100-i;j++){
+        //         document.write("*");
+        //    }
+        //    document.write('</br>');
+        // }
+        // //正三角
+        // for(i=0;i<100;i++){
+        //    for(j=0;j<i;j++){
+        //         document.write("*");
+             
+        //    }
+           
+        //    document.write('</br>');
+        // }
+        // 可以给循环起名，然后使用break [循环名称]; 来跳出指定的循环，默认跳出最近的循环
+        // outer_loop:
+        // for(var i = 0 ;i<10;i++){
+        //     inner_loop:
+        //     for(var j =0;j<i;j++){
+        //         if(i == 4){
+        //             break outer_loop;
+        //         }
+        //         document.write('*');
+        //     }
+        //     document.write('</br>')
+        // }
+        // contiune 用来直接进行下一次循环，默认作用于最近的循环，同样可以结合循环名称使用
+        outer_loop:
+        for(var i = 0 ;i<10;i++){
+            inner_loop:
+            for(var j =0;j<i;j++){
+                if(i == 4){
+                    continue outer_loop;
+                }
+                document.write('*');
+            }
+            document.write('</br>')
+        }
+        //注意return会直接退出整个函数
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

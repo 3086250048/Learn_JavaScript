@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        //方式一
+        // var obj_0 = new Object();
+        // obj_0.name = 'Czz';
+        // obj_0.name = 'ccc';
+        // delete obj_0.name;
+        // alert(obj_0.name);
+        //方式二,使用方式二时[]中可以直接传递一个变量，更加灵活
+        // var obj_1 =new Object();
+        // obj_1['name']='Czz';
+        // obj_1['age']=18;
+        // var var_0 = 'name';
+        // alert(obj_1[var_0]);
+        // var_0 = 'age';
+        // alert(obj_1[var_0]);
+        
+        // 对象的属性类型何以是一个对象
+        // var obj_0 = new Object();
+        // var obj_1 = new Object();
+        // obj_0.name = 'Czz';
+        // obj_1.child = obj_0;
+        // alert(obj_1.child.name);
+        //"属性"  in 对象 检查对象中是否包含的某些属性
+        // alert('child' in obj_1);
+
+        /*基本数据类型
+            String Number Boolen Null Undefined 
+          引用数据类型
+            Object
+        */
+    //    var a = 123;
+    //    b = a;
+    //    a=1234;
+    //    alert(a);
+    //    alert(b);//基本数据类型不会随着被引用变量改变而改变。
+
+    //    var obj_0 = new Object();
+    //    var obj_1 = new Object();
+    //     obj_0.name ='Czz';
+    //     obj_1=obj_0;
+    //     obj_0.name = 'CCC';
+    //     alert(obj_0.name);
+    //     alert(obj_1.name);//引用数据类型会随着被引用变量改变
+
+        //快速创建一个对象,并且可以再创建对象的时候直接指定对象中的属性,也可以再对象中嵌套对象
+        var obj = {
+            name:'czz',
+            age:'18', 
+            //函数也可以作为对象的属性
+            sayname:function(){
+                alert(obj.name);
+            }  
+        };
+        // alert(typeof obj);
+        // alert(obj.name);
+        // alert(obj.age);
+        // //调用方法
+        // obj.sayname();
+
+        // 枚举对象中的属性
+        for(var i in obj){
+            alert(obj[i]);
+        }
+       
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 方式一
+        // var fun_0 = new Function("alert('你好');");
+        // fun_0();
+        //方式二
+        // function fun_1(){
+        //     alert('你好');
+        // }
+        // fun_1();
+        //方式三
+        // var fun_2 = function(){
+        //     alert('你好');
+        // }
+        // fun_2();
+
+        // 参数传递
+        // function fun_0(a,b){
+        //     // 如果return中不写则返回undefined，函数如果不写return，则也返回undefined
+        //     return a+b;
+        // }
+        // var sum=fun_0(1,2);
+        // alert(sum);
+
+        //立即执行函数,只会执行一次
+        (function(num_0,num_1){
+            alert('立即执行和为:'+(num_0+num_1));
+        })(1,2);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

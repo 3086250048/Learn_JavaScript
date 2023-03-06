@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // function a_del(){
+        //             this.parentNode.parentNode.removeChild(this.parentNode)
+        // };
+        window.onload=function(){
+            var a_count=0
+            var a_lis=document.getElementsByTagName('a');
+            /*为每一个超链接绑定一个单击响应函数
+            这种操作比较麻烦，而且只能为已有的超链接绑定，而新添加的超链接必须重新绑定*/
+            // for(var i=0;i<a_lis.length;i++){
+            //     a_lis[i].onclick=a_del
+            // };
+            
+            
+            /*
+                我们希望只绑定一次即可应用到多个元素上，即使是后面添加的元素
+                我们可以尝试将其绑定给元素共同的祖先元素
+
+                事件的委派
+                    -指将事件统一绑定给元素共同的祖先元素，这样当后代元素的事件触发时，会一直传递到
+                    祖先元素，从而通过祖先元素的响应函数来处理事件
+                    -通过委派可以减少事件绑定的次数，提升性能
+                写法如下
+
+            */
+           var outer=document.getElementById('outer');
+           outer.onclick=function(e){
+                //如果触发事件的对象是期望的元素则执行函数
+                // e为浏览器默认传入的实参，其中target属性会返回触发事件的元素
+                //判断触发事件的节点名称是否为a标签
+               if(e.target.nodeName=='A'){
+                     e.target.parentElement.remove();
+               }
+
+           };
+
+
+            var bt0=document.getElementById('bt0');
+            bt0.onclick=function(){
+                var ul=document.getElementById('outer');
+                var li=document.createElement('li');
+                li.innerHTML='<a href="javascript:;">'+ a_count++ +'超链接</a>';
+                ul.appendChild(li);
+                // li.firstChild.onclick=a_del;
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="bt0">添加超链接</button>
+    <ul id="outer">
+        <li><a href="javascript:;">1超链接</a></li>
+        <li><a href="javascript:;">2超链接</a></li>
+        <li><a href="javascript:;">3超链接</a></li>
+        <li><a href="javascript:;">4超链接</a></li>
+    </ul>
+</body>
+</html>

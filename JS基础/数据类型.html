@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+        JS中数据类型一共有6种
+        String
+            在JS中字符串需要使用引号引起来
+            单双引号都可以
+        Number
+        Boolen
+        Null
+        Undefind
+        Object 
+        前五种为基本数据类型，Object
+        为引用数据类型
+        */
+        var str = 'Hello';
+        alert(str);
+        //在JS中所有的数值都为number类型
+        var num=111;
+        num=121.123;
+        alert(num);
+        // typeof检查变量的类型
+        alert(typeof num);
+        /* JS用表示用Number.Max_VALUE表示最大值，如果超出这个值将会返回infinity 正无穷
+            或者直接使用infinity赋值，infinity也属于数值类型,JS使用Number.Min_VALUE表示
+            0以上的最小值
+        */
+        var a = Infinity ;
+        alert(typeof a);
+        alert(Number.MAX_VALUE);
+        /*
+            JS用NaN表示非数字，可以用NaN关键字直接赋值，NaN 本身还是属于Number类型
+        */
+        var b =NaN;
+        alert(typeof b);
+        /*
+        Null类型只有一个就是Null
+        类型是Object
+        */
+       var c=null;
+       alert(typeof c)
+        /*
+            undefined类型的值只有一个就是undefined，当声明一个变量没有赋值时，它的值
+            就是undefined
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            //获取body
+            //-方式一
+            var body0 = document.getElementsByName('body')[0];
+            //-方式二
+            var body1 = document.body;
+            //获取Html根标签
+            var de = document.documentElement;
+            //获取所有html标签
+            //方式一
+            var all0 = document.all;
+            //方式二
+            var all1 = document.getElementsByTagName("*")
+            alert(all1.length);
+            //根据className获取一组元素对象
+            var box1 = document.getElementsByClassName('box1')[0];
+            alert(box1);
+            //通过css选择器选中元素，如果有多个元素满足条件，则只返回第一个
+            var css_box = document.querySelector(".box1 div");
+            css_box.innerHTML = '你好我是box1中的div'
+            //通过css选择器选中元素，可以返回多个符合条件的元素,即使符合条件的元素只有一个也会返回数组
+            var css_boxs = document.querySelectorAll(".box1 div")
+            css_boxs[0].innerHTML='你好我是box1中的div!';
+            css_boxs[1].innerHTML='你好我是box1中的div?'
+        };
+    </script>
+</head>
+
+<body>
+    <div class="box1">
+        <div></div>
+    </div>
+    <div class="box1">
+        <div></div>
+    </div>
+</body>
+
+</html>
